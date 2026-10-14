@@ -1,0 +1,46 @@
+2026-10-14 15:09:41,289 [INFO] Starting scrape (max_pages=2)
+2026-10-14 15:09:41,290 [INFO] Fetching page 1...
+2026-10-14 15:09:41,397 [INFO] Page 1: 30 certifications
+2026-10-14 15:09:42,429 [INFO] Fetching page 2...
+2026-10-14 15:09:42,544 [INFO] Page 2: 60 certifications
+2026-10-14 15:09:43,587 [INFO] Total scraped: 90
+2026-10-14 15:46:31,213 [INFO] Starting scrape (max_pages=2)
+2026-10-14 15:46:31,213 [INFO] Fetching page 1...
+2026-10-14 15:46:31,370 [INFO] Page 1: 30 certifications
+2026-10-14 15:46:32,406 [INFO] Fetching page 2...
+2026-10-14 15:46:32,526 [INFO] Page 2: 60 certifications
+2026-10-14 15:46:33,569 [INFO] Total scraped: 90
+2026-10-14 15:46:39,290 [INFO] Starting scrape (max_pages=3)
+2026-10-14 15:46:39,290 [INFO] Fetching page 1...
+2026-10-14 15:46:39,385 [INFO] Page 1: 30 certifications
+2026-10-14 15:46:40,416 [INFO] Fetching page 2...
+2026-10-14 15:46:40,506 [INFO] Page 2: 60 certifications
+2026-10-14 15:46:41,551 [INFO] Fetching page 3...
+2026-10-14 15:46:41,781 [INFO] Page 3: 90 certifications
+2026-10-14 15:46:42,841 [INFO] Total scraped: 180
+2026-10-14 15:46:43,244 [INFO] Found 0 existing certifications in Supabase
+2026-10-14 15:46:43,246 [INFO] New certifications to add: 180
+2026-10-14 15:47:14,960 [INFO] Starting scrape (max_pages=3)
+2026-10-14 15:47:14,960 [INFO] Fetching page 1...
+2026-10-14 15:47:15,055 [INFO] Page 1: 30 certifications
+2026-10-14 15:47:16,086 [INFO] Fetching page 2...
+2026-10-14 15:47:16,178 [INFO] Page 2: 60 certifications
+2026-10-14 15:47:17,222 [INFO] Fetching page 3...
+2026-10-14 15:47:17,355 [INFO] Page 3: 90 certifications
+2026-10-14 15:47:18,427 [INFO] Total scraped: 180
+2026-10-14 15:47:18,773 [INFO] Found 0 existing certifications in Supabase
+2026-10-14 15:47:18,774 [INFO] New certifications to add: 180
+2026-10-14 15:47:19,318 [INFO] Inserted batch 1: 100 certifications
+2026-10-14 15:47:20,095 [INFO] Inserted batch 2: 80 certifications
+2026-10-14 15:47:20,298 [INFO] Sync complete. Inserted 180/180 new certifications.
+2026-10-14 15:48:28,567 [INFO] Starting scrape (max_pages=3)
+2026-10-14 15:48:28,567 [INFO] Fetching page 1...
+2026-10-14 15:48:28,660 [INFO] Page 1: 30 certifications
+2026-10-14 15:48:29,692 [INFO] Fetching page 2...
+2026-10-14 15:48:29,784 [INFO] Page 2: 60 certifications
+2026-10-14 15:48:30,829 [INFO] Fetching page 3...
+2026-10-14 15:48:30,960 [INFO] Page 3: 90 certifications
+2026-10-14 15:48:32,022 [INFO] Total scraped: 180
+2026-10-14 15:48:32,363 [INFO] Found 150 existing certifications in Supabase
+2026-10-14 15:48:32,365 [INFO] New certifications to add: 0
+2026-10-14 15:48:32,366 [INFO] Sync complete. Inserted 0/0 new certifications.

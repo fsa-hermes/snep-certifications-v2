@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
-import { fetchCertifications, type Certification } from '../lib/api'
+import { fetchCertifications, type Certification } from '../lib/supabase'
 
 interface CertificationsTableProps {
   initialStats: {
@@ -27,6 +27,7 @@ export default function CertificationsTable({ initialStats }: CertificationsTabl
     certification: searchParams.get('certification') || undefined,
     categorie: searchParams.get('categorie') || undefined,
     artiste: searchParams.get('artiste') || undefined,
+    label: searchParams.get('label') || undefined,
     dateFrom: searchParams.get('dateFrom') || undefined,
     dateTo: searchParams.get('dateTo') || undefined,
     sortBy: searchParams.get('sortBy') || 'date_constat',
@@ -133,10 +134,12 @@ export default function CertificationsTable({ initialStats }: CertificationsTabl
                 <td colSpan={9} className="empty">Aucune certification trouvée</td>
               </tr>
             ) : (
-              data.map(cert => (
+              data.map((cert: Certification) => (
                 <tr key={cert.id}>
                   <td className="cell-titre" title={cert.titre}>{cert.titre}</td>
-                  <td className="cell-artiste" title={cert.artiste}>{cert.artiste}</td>
+                  <td className="cell-artiste" title={cert.artists?.map(a => a.artist.name).join(', ') || ''}>
+                    {cert.artists?.map(a => a.artist.name).join(', ') || '—'}
+                  </td>
                   <td>
                     <span className={`cert-badge ${getCertClass(cert.certification)}`}>
                       {cert.certification}
@@ -147,7 +150,7 @@ export default function CertificationsTable({ initialStats }: CertificationsTabl
                       <span className="cat-badge">{cert.categorie}</span>
                     )}
                   </td>
-                  <td className="cell-editeur" title={cert.editeur || ''}>{cert.editeur || '—'}</td>
+                  <td className="cell-editeur" title={cert.label?.name || ''}>{cert.label?.name || '—'}</td>
                   <td className="cell-date">{cert.date_constat || '—'}</td>
                   <td className="cell-date">{cert.date_sortie || '—'}</td>
                   <td className="cell-date">{cert.duree_obtention || '—'}</td>

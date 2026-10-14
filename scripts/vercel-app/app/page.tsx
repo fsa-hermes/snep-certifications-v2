@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Filters from './Filters'
 import CertificationsTable from './CertificationsTable'
-import { getStats, getFilterOptions } from '../lib/api'
+import { getStats, getFilterOptions } from '../lib/supabase'
 
 export const dynamic = 'force-dynamic'
 
@@ -17,7 +17,8 @@ interface Stats {
 interface FiltersData {
   certifications: string[]
   categories: string[]
-  artistes: string[]
+  artists: string[]
+  labels: string[]
 }
 
 function StatsHeader({ stats }: { stats: Stats }) {
@@ -73,6 +74,7 @@ function FiltersWrapper({ initialFilters }: { initialFilters: FiltersData }) {
   const [certification, setCertification] = useState(searchParams.get('certification') || '')
   const [categorie, setCategorie] = useState(searchParams.get('categorie') || '')
   const [artiste, setArtiste] = useState(searchParams.get('artiste') || '')
+  const [label, setLabel] = useState(searchParams.get('label') || '')
   const [dateFrom, setDateFrom] = useState(searchParams.get('dateFrom') || '')
   const [dateTo, setDateTo] = useState(searchParams.get('dateTo') || '')
   const [sortBy, setSortBy] = useState(searchParams.get('sortBy') || 'date_constat')
@@ -88,13 +90,14 @@ function FiltersWrapper({ initialFilters }: { initialFilters: FiltersData }) {
     if (certification) params.set('certification', certification)
     if (categorie) params.set('categorie', categorie)
     if (artiste) params.set('artiste', artiste)
+    if (label) params.set('label', label)
     if (dateFrom) params.set('dateFrom', dateFrom)
     if (dateTo) params.set('dateTo', dateTo)
     if (sortBy !== 'date_constat') params.set('sortBy', sortBy)
     if (sortOrder !== 'desc') params.set('sortOrder', sortOrder)
     if (page > 1) params.set('page', page.toString())
     router.replace(`/?${params.toString()}`, { scroll: false })
-  }, [search, certification, categorie, artiste, dateFrom, dateTo, sortBy, sortOrder, page, router])
+  }, [search, certification, categorie, artiste, label, dateFrom, dateTo, sortBy, sortOrder, page, router])
 
   useEffect(() => {
     updateUrl()
@@ -105,12 +108,13 @@ function FiltersWrapper({ initialFilters }: { initialFilters: FiltersData }) {
     setCertification('')
     setCategorie('')
     setArtiste('')
+    setLabel('')
     setDateFrom('')
     setDateTo('')
     setPage(1)
   }
 
-  const hasFilters = !!(search || certification || categorie || artiste || dateFrom || dateTo)
+  const hasFilters = !!(search || certification || categorie || artiste || label || dateFrom || dateTo)
 
   return (
     <Filters
@@ -123,6 +127,8 @@ function FiltersWrapper({ initialFilters }: { initialFilters: FiltersData }) {
       setCategorie={setCategorie}
       artiste={artiste}
       setArtiste={setArtiste}
+      label={label}
+      setLabel={setLabel}
       dateFrom={dateFrom}
       setDateFrom={setDateFrom}
       dateTo={dateTo}

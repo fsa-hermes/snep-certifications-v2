@@ -6,7 +6,8 @@ interface FiltersProps {
   initialFilters: {
     certifications: string[]
     categories: string[]
-    artistes: string[]
+    artists: string[]
+    labels: string[]
   }
   search: string
   setSearch: (value: string) => void
@@ -16,6 +17,8 @@ interface FiltersProps {
   setCategorie: (value: string) => void
   artiste: string
   setArtiste: (value: string) => void
+  label: string
+  setLabel: (value: string) => void
   dateFrom: string
   setDateFrom: (value: string) => void
   dateTo: string
@@ -40,6 +43,8 @@ export default function Filters({
   setCategorie,
   artiste,
   setArtiste,
+  label,
+  setLabel,
   dateFrom,
   setDateFrom,
   dateTo,
@@ -130,8 +135,18 @@ export default function Filters({
         <label>Artiste</label>
         <select value={artiste} onChange={handleArtisteChange}>
           <option value="">Tous</option>
-          {initialFilters.artistes.map(a => (
+          {initialFilters.artists.map(a => (
             <option key={a} value={a}>{a}</option>
+          ))}
+        </select>
+      </div>
+
+      <div className="filter-group">
+        <label>Label</label>
+        <select value={label} onChange={(e) => { setLabel(e.target.value); setPage(1) }}>
+          <option value="">Tous</option>
+          {initialFilters.labels.map(l => (
+            <option key={l} value={l}>{l}</option>
           ))}
         </select>
       </div>
